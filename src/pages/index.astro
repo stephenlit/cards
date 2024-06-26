@@ -1,0 +1,38 @@
+---
+import Button from "../components/Button.astro";
+import Card from "../components/Card.astro";
+import data from "../data/cardData.json";
+---
+
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+        <meta name="viewport" content="width=device-width" />
+        <meta name="generator" content={Astro.generator} />
+        <title>Astro</title>
+    </head>
+    <body>
+        <!-- Place pricing section here -->
+        <div class="w-100 flex h-screen items-center justify-center">
+            {
+                data.map((card) => (
+                    <Card
+                        tier={card.tier}
+                        most_popular={card.most_popular}
+                        amount_per_month={card.amount_per_month}
+                        title={card.title}
+                        description={card.description}
+                        btn_text={card.btn_text}
+                        features={card.features}
+                    />
+                ))
+            }
+            <!--
+         </div>
+ <Button class="m-2 w-[50%] rounded-lg bg-red-400 p-3"
+            >Get started</Button
+        > -->
+        </div>
+    </body>
+</html>
