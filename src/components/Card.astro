@@ -32,21 +32,33 @@ const backGround =
           : tier === "Enterprise"
             ? "bg-green-500"
             : "";
+
+const textColor =
+    tier === "Free"
+        ? "text-black"
+        : tier === "Pro"
+          ? "text-white"
+          : tier === "Enterprise"
+            ? "text-white"
+            : "";
 ---
 
-<div class="m-4 min-h-[300px] w-48 p-2 shadow-lg">
+<div class="m-4 min-h-[300px] max-w-28 shadow-lg">
     <div class=`text-center p-1 rounded-t-lg ${backGround}`>
-        <h3 class="font-bold">{tier}</h3>
+        <h3 class=`font-bold ${textColor}`>{tier}</h3>
     </div>
+    <div class="m-2">
+        {most_popular && <span>Most popular</span>}
+        <p>{amount_per_month} /month</p>
+        <h4>{title}</h4>
+        <p>{description}</p>
+        <div class="text-center"></div>
 
-    {most_popular && <span>Most popular</span>}
-    <p>{amount_per_month} /month</p>
-    <h4>{title}</h4>
-    <p>{description}</p>
-    <Button
-        class={`m-auto w-full rounded-lg ${backGround} px-1 py-2`}
-        text={btn_text}
-    />
+        <Button
+            class={`w-[50%] rounded-lg ${backGround} ${textColor} px-1 py-2`}
+            text={btn_text}
+        />
+    </div>
     <div>
         {features.map((feature) => <p>{feature.title}</p>)}
     </div>
