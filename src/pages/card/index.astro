@@ -1,5 +1,5 @@
 ---
-
+import { Icon } from "astro-icon/components";
 ---
 
 <div class="flex h-screen items-center justify-center">
@@ -27,9 +27,13 @@
         </div>
 
         <div class="m-3 text-center">
-            <ul>
-                <li>feature 1</li>
-                <li>feature 2</li>
+            <ul class="flex flex-col gap-2">
+                <li>
+                    <Icon class="mr-1 inline-block" name="check" />Feature 1
+                </li>
+                <li>
+                    <Icon name="crossed" class="mr-1 inline-block" /> feature 2
+                </li>
                 <li>feature 3</li>
             </ul>
         </div>
