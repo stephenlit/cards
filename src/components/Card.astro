@@ -1,5 +1,6 @@
 ---
 import Button from "./Button.astro";
+import { Icon } from "astro-icon/components";
 
 const {
     tier,
@@ -43,23 +44,52 @@ const textColor =
             : "";
 ---
 
-<div class="m-4 min-h-[300px] max-w-28 shadow-lg">
-    <div class=`text-center p-1 rounded-t-lg ${backGround}`>
-        <h3 class=`font-bold ${textColor}`>{tier}</h3>
+<div
+    class="flex min-h-[450px] max-w-[300px] flex-col justify-around shadow-lg shadow-purple-200"
+>
+    <div
+        class="rounded-t-lg bg-blue-500 p-2 text-center font-semibold capitalize text-white"
+    >
+        heading
     </div>
-    <div class="m-2">
-        {most_popular && <span>Most popular</span>}
-        <p>{amount_per_month} /month</p>
-        <h4>{title}</h4>
-        <p>{description}</p>
-        <div class="text-center"></div>
+    <div class="m-0 text-center">
+        {
+            most_popular && (
+                <p class="m-auto w-fit rounded bg-black p-0.5 px-3 text-white">
+                    Most Popular
+                </p>
+            )
+        }
 
-        <Button
-            class={`w-[50%] rounded-lg ${backGround} ${textColor} px-1 py-2`}
-            text={btn_text}
-        />
+        <div class="mb-1 mt-5 flex justify-center">
+            <span class="align-top">$</span>
+            <span class="text-5xl font-semibold">0</span>
+        </div>
+        <h3 class="mb-2 text-xl font-semibold tracking-wide">
+            Great For Starters
+        </h3>
+        <p class="m-auto w-[75%]">{description}</p>
     </div>
-    <div>
-        {features.map((feature) => <p>{feature.title}</p>)}
+    <div class="text-center">
+        <button
+            class=`w-[65%]  border border-black px-3 py-1 rounded ${textColor}`
+            >{btn_text}</button
+        >
+    </div>
+
+    <div class="m-3 text-center">
+        <ul class="flex flex-col gap-2">
+            {
+                features.map((feature) => (
+                    <li>
+                        <Icon
+                            class="mr-1 inline-block"
+                            name={feature.checked ? "check" : "crossed"}
+                        />
+                        {feature.title}
+                    </li>
+                ))
+            }
+        </ul>
     </div>
 </div>
